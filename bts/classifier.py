@@ -123,7 +123,7 @@ class BrainTumorClassifier():
             None
         """
         if self.device == 'cpu':
-            self.model.load_state_dict(torch.load(path, map_location=device))
+            self.model.load_state_dict(torch.load(path, map_location=self.device))
         else:
             self.model.load_state_dict(torch.load(path))
             self.model.to(self.device)
