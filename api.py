@@ -30,8 +30,7 @@ def get_arguments():
 
 class Api:
     def __init__(self):
-        self.device = torch.device(
-            'cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     def call(self, file, folder, ofp, odp):
         """Method saves the predicted image by taking different parameters."""
@@ -75,11 +74,9 @@ class Api:
 
         model = DynamicUNet(filter_list).to(self.device)
         classifier = BrainTumorClassifier(model, self.device)
-        model_path = os.path.join(
-            'saved_models', 'UNet-[16, 32, 64, 128, 256].pt')
+        model_path = os.path.join('saved_models', 'UNet-[16, 32, 64, 128, 256].pt')
         classifier.restore_model(model_path)
-        print(
-            f'Saved model at location "{model_path}" loaded on {self.device}')
+        print(f'Saved model at location "{model_path}" loaded on {self.device}')
         return model
 
     def _get_model_output(self, image, model):
